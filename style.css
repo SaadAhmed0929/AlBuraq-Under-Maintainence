@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('background1.png') no-repeat center center/cover;
+  color: #333;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(0,0,0,0.6);
+  margin-top: auto;
+}
+
+
+/* Navbar Styling */
+header.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0, 0, 0, 0.042));
+  color: white;
+}
+
+header .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+header img {
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+header span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Main Section Styling */
+.main-content {
+  flex: 1;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,0.6);
+}
+
+.main-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.Contact{
+
+    text-align: center;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+}
+
+
+
+
+
+/* Sidebar Styling */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #155488ae;
+  backdrop-filter: blur(8px);     
+  -webkit-backdrop-filter: blur(8px);
+  overflow-x: hidden;
+  transition: 0.2s;
+  padding-top: 60px;
+  color: white;
+  z-index: 1001;
+}
+
+.sidebar a {
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  color: white;
+  font-size: 1rem;
+}
+
+.sidebar a:hover {
+  background: #f3a916;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+
+
+
+/* Sidebar Button Styling */
+.contact-btn {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #155588ae;
+  backdrop-filter: blur(8px);     
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 5px 0 0 5px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1002;
+  border: none;
+  transition: background 0.3s;
+}
+
+.contact-btn:hover {
+  background: #f3a916;
+}
+
+.contact-btn img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+
+
+
+
+
+/* Loading*/
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-bottom: 90px;
+  width: 100%;
+  height: 100%;
+  background: #155488;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.spinner {
+  width: 240px;
+  height: 240px;
+  background: url("logo1.png") no-repeat center/contain;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
