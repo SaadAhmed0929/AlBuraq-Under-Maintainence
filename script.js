@@ -2,6 +2,12 @@
 window.addEventListener("load", function() 
 {
   document.getElementById("preloader").style.display = "none";
+  
+  const infoPanel = document.getElementById("infoPanel");
+  if (infoPanel) infoPanel.style.display = "flex";
+  
+  const cookieNotice = document.getElementById("cookie-notice");
+  if (cookieNotice) cookieNotice.style.display = "flex";
 });
 
 document.addEventListener('DOMContentLoaded', () => {

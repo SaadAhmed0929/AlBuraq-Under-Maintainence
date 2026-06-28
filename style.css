@@ -106,7 +106,7 @@ header span {
         top: 50%;
         transform: translateY(-50%);
         z-index: 10000;
-        display: flex;
+        display: none;
         align-items: center;
         pointer-events: none;
         cursor: auto;
@@ -277,7 +277,7 @@ header span {
   color: #fff;
   padding: 15px 25px;
   border-radius: 8px;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 20px;
   z-index: 3000;
