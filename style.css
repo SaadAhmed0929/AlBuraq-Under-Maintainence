@@ -99,72 +99,224 @@ header span {
 
 
 
-/* Sidebar Styling */
-.sidebar {
-  height: 100%;
-  width: 0;
+    /* Animated Info Panel Wrapper */
+    .info-panel-wrapper {
+        position: fixed;
+        right: 2vw;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        pointer-events: none;
+        cursor: auto;
+    }
+
+    .info-panel-wrapper * {
+        cursor: auto;
+    }
+
+    /* The Info Trigger Button */
+    .info-trigger {
+        pointer-events: auto;
+        background: #f3a916;
+        color: #000;
+        border: none;
+        width: clamp(40px, 4vw, 50px);
+        height: clamp(80px, 8vw, 100px);
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        z-index: 51;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .info-trigger:hover {
+        background-color: #e59a0f;
+        color: #000;
+    }
+
+    .info-trigger:hover svg {
+        stroke: #000;
+    }
+
+    .trigger-text {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        font-size: clamp(10px, 1vw, 12px);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-family: 'Inter', Poppins, sans-serif;
+    }
+
+    .info-trigger svg {
+        width: 16px;
+        height: 16px;
+        stroke: #000;
+        stroke-width: 2;
+        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), stroke 0.3s ease;
+    }
+
+    /* When Expanded, Rotate the Plus into an X */
+    .info-panel-wrapper.expanded .info-trigger svg {
+        transform: rotate(135deg);
+    }
+
+    /* The Pop-up Window (Hidden by Default) */
+    .info-content {
+        pointer-events: auto;
+        position: absolute;
+        right: clamp(45px, 4.5vw, 60px);
+        top: 50%;
+        transform: translateY(-50%);
+        clip-path: inset(50% 0 50% 100% round 12px);
+        background: #000;
+        color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        width: clamp(280px, 30vw, 350px);
+        opacity: 0;
+        visibility: hidden;
+        transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease, visibility 0s linear 0.6s;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        z-index: 10000;
+        font-family: 'Inter', Poppins, sans-serif;
+    }
+
+    /* Expands the Pop-up Window */
+    .info-panel-wrapper.expanded .info-content {
+        opacity: 1;
+        visibility: visible;
+        clip-path: inset(0 0 0 0 round 12px);
+        transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease, visibility 0s linear 0s;
+    }
+
+    /* Text Animation Inside Panel */
+    .info-section {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Triggers the text animation staggered when expanded */
+    .info-panel-wrapper.expanded .info-section {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .info-panel-wrapper.expanded .info-section:nth-of-type(1) { transition-delay: 0.2s; }
+    .info-panel-wrapper.expanded .info-section:nth-of-type(2) { transition-delay: 0.3s; }
+    .info-panel-wrapper.expanded .info-section:nth-of-type(3) { transition-delay: 0.4s; }
+
+    .info-section h3 {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        opacity: 0.8;
+        margin-bottom: 8px;
+        font-weight: 900;
+        color: #fff;
+    }
+
+    .info-section ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .info-section li,
+    .contact-link {
+        font-size: clamp(14px, 1.2vw, 16px);
+        font-weight: 400;
+        text-decoration: none;
+        color: #ccc;
+        transition: color 0.2s ease;
+        cursor: pointer;
+    }
+
+    .contact-link:hover {
+        color: #f3a916 !important;
+    }
+
+    /* --- Responsive Overrides --- */
+    @media (max-width: 1024px) {
+        .info-trigger { width: 50px; height: 110px; }
+    }
+    @media (max-width: 768px) {
+        .info-panel-wrapper { top: 45%; }
+    }
+    @media (max-width: 480px) {
+        .info-content {
+            width: 250px;
+            right: 55px;
+            padding: 1.5rem;
+        }
+    }
+
+/* Cookie Notice */
+.cookie-notice {
   position: fixed;
-  top: 0;
-  right: 0;
-  background-color: #155488ae;
-  backdrop-filter: blur(8px);     
-  -webkit-backdrop-filter: blur(8px);
-  overflow-x: hidden;
-  transition: 1s;
-  padding-top: 60px;
-  color: white;
-  z-index: 1001;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 3000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  font-size: 0.9rem;
 }
 
-.sidebar a {
-  padding: 10px 20px;
-  text-decoration: none;
-  display: block;
-  color: white;
-  font-size: 1rem;
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
 }
 
-.sidebar a:hover {
-  background: #f3a916;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-
-
-
-
-/* Sidebar Button Styling */
-.contact-btn {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: #155588ae;
-  backdrop-filter: blur(8px);     
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 5px 0 0 5px;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1002;
+.cookie-btn {
+  padding: 8px 15px;
   border: none;
-  transition: background 0.3s;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  transition: background 0.3s, color 0.3s;
 }
 
-.contact-btn:hover {
-  background: #f3a916;
+.cookie-btn.accept {
+  background-color: #f3a916;
+  color: #000;
 }
 
-.contact-btn img {
-  width: 30px;
-  height: 30px;
-  display: block;
+.cookie-btn.accept:hover {
+  background-color: #e59a0f;
+}
+
+.cookie-btn.decline {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.cookie-btn.decline:hover {
+  background-color: #333;
 }
 
 
